@@ -1,0 +1,31 @@
+{% extends 'tripulacion/base.html'%}
+{% block head %}
+    <title>Nueva Tripulacion</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Nueva Tripulacion</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            {{ tripulacion_form.codigo.label_tag }}
+            {{ tripulacion_form.codigo }}
+        </p>
+        <p>
+            {{ tripulacion_form.nombre.label_tag }}
+            {{ tripulacion_form.nombre }}
+        </p>
+        <p>
+            {{ tripulacion_form.base.label_tag }}
+            {{ tripulacion_form.base }}
+        </p>
+        
+
+        <button type="submit">Guardar</button>
+    </form>
+    <p>
+        <strong>{{ message }}</strong>
+    </p>
+
+    <p><a href="{% url 'tripulacion_index' %}">Regresar</a></p>    
+{% endblock %}

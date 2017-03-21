@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tripulacion</title>
+
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+  <h1>Tripulacion:</h1>
+
+  {% for trip in tripulacion %}
+    <div class="tripulacion">
+
+      <h2>{{ trip.codigo }}</h2>
+      <p>{{ trip.nombre }}</p>
+      <p>{{ trip.base }}</p>
+      <p><a href="{% url 'tripulacion_tripulacion_detail' trip.codigo %}">Ver detalle</a></p>
+    </div>
+  {% endfor %}
+</body>
+</html>
