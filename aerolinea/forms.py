@@ -23,7 +23,7 @@ class VueloForm(forms.ModelForm):
         fields = ('fecha', 'origen', 'destino', 'hora', 'tripulacion', 'avion','piloto')
 
 
-class VueloFormtest(forms.Form):
+class VueloForm2(forms.Form):
     fecha = forms.DateField()
     origen = forms.CharField(max_length=200)
     destino = forms.CharField(max_length=200)
