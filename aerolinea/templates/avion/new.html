@@ -1,0 +1,30 @@
+{% extends 'generic/base.html'%}
+{% block head %}
+    <title>Nuevo Avion</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Nuevo Avion</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            {{ avion_form.codigo.label_tag }}
+            {{ avion_form.codigo }}
+        </p>
+        <p>
+            {{ avion_form.tipo.label_tag }}
+            {{ avion_form.tipo }}
+        </p>
+        <p>
+            {{ avion_form.base.label_tag }}
+            {{ avion_form.base }}
+        </p>        
+
+        <button type="submit">Guardar</button>
+    </form>
+    <p>
+        <strong>{{ message }}</strong>
+    </p>
+
+    <p><a href="{% url 'avion_index' %}">Regresar</a></p>    
+{% endblock %}

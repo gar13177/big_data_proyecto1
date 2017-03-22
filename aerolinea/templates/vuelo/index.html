@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuelo</title>
+
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+  <h1>Vuelo:</h1>
+
+  {% for vuelo in vuelos %}
+    <div class="vuelo">
+
+      <h2>{{ vuelo.fecha }}</h2>
+      <p>{{ vuelo.origen }}</p>
+      <p>{{ vuelo.destino }}</p>
+      <p>{{ vuelo.hora }}</p>
+      <p>{{ vuelo.tripulacion }}</p>
+      <p>{{ vuelo.avion }}</p>
+      <p>{{ vuelo.piloto }}</p>
+      <p><a href="{% url 'vuelo_vuelo_detail' vuelo.id %}">Ver detalle</a></p>
+    </div>
+  {% endfor %}
+</body>
+</html>

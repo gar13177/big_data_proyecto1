@@ -1,6 +1,11 @@
 from django.db import models
 from djangotoolbox.fields import ListField
 from djangotoolbox.fields import EmbeddedModelField
+from .nforms import ObjectListField, StringListField
+
+class EmbedOverrideField(EmbeddedModelField):
+    def formfield(self, **kwargs):
+        return models.Field.formfield(self, ObjectListField, **kwargs)
 
 class Tripulacion(models.Model):
 	codigo = models.IntegerField()
@@ -15,7 +20,7 @@ class Avion(models.Model):
 class Piloto(models.Model):
 	codigo = models.IntegerField()
 	nombre =  models.CharField(max_length=200)
-	horas_vuelo = models.DateTimeField()
+	horas_vuelo = models.FloatField()
 	base = models.CharField(max_length=200)
 
 class Vuelo(models.Model):
@@ -23,8 +28,7 @@ class Vuelo(models.Model):
 	origen = models.CharField(max_length=200)
 	destino = models.CharField(max_length=200)
 	hora = models.DateTimeField()
-	tripulacion = ListField(EmbeddedModelField('Tripulacion'))
-	avion = EmbeddedModelField('Avion')
-	piloto = EmbeddedModelField('Piloto')
+	tripulacion = ListField(EmbedOverrideField('Tripulacion'))
+	avion = EmbedOverrideField('Avion')
+	piloto = EmbedOverrideField('Piloto')
 
-# Create your models here.

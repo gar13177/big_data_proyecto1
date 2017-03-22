@@ -1,0 +1,46 @@
+{% extends 'generic/base.html'%}
+{% block head %}
+    <title>Nuevo Vuelo</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Nuevo Vuelo</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            {{ vuelo_form.fecha.label_tag }}
+            {{ vuelo_form.fecha }}
+        </p>
+        <p>
+            {{ vuelo_form.origen.label_tag }}
+            {{ vuelo_form.origen }}
+        </p>
+        <p>
+            {{ vuelo_form.destino.label_tag }}
+            {{ vuelo_form.destino }}
+        </p>
+        <p>
+            {{ vuelo_form.hora.label_tag }}
+            {{ vuelo_form.hora }}
+        </p>
+        <p>
+            {{ vuelo_form.tripulacion.label_tag }}
+            {{ vuelo_form.tripulacion }}
+        </p>
+        <p>
+            {{ vuelo_form.avion.label_tag }}
+            {{ vuelo_form.avion }}
+        </p>
+        <p>
+            {{ vuelo_form.piloto.label_tag }}
+            {{ vuelo_form.piloto }}
+        </p>
+
+        <button type="submit">Guardar</button>
+    </form>
+    <p>
+        <strong>{{ message }}</strong>
+    </p>
+
+    <p><a href="{% url 'vuelo_index' %}">Regresar</a></p>    
+{% endblock %}

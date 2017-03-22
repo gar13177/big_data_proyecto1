@@ -1,0 +1,35 @@
+{% extends 'generic/base.html'%}
+{% block head %}
+    <title>Nuevo Piloto</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Nuevo Piloto</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            {{ piloto_form.codigo.label_tag }}
+            {{ piloto_form.codigo }}
+        </p>
+        <p>
+            {{ piloto_form.nombre.label_tag }}
+            {{ piloto_form.nombre }}
+        </p>
+        <p>
+            {{ piloto_form.base.label_tag }}
+            {{ piloto_form.base }}
+        </p>
+        <p>
+            {{ piloto_form.horas_vuelo.label_tag }}
+            {{ piloto_form.horas_vuelo }}
+        </p>
+        
+
+        <button type="submit">Guardar</button>
+    </form>
+    <p>
+        <strong>{{ message }}</strong>
+    </p>
+
+    <p><a href="{% url 'piloto_index' %}">Regresar</a></p>    
+{% endblock %}
