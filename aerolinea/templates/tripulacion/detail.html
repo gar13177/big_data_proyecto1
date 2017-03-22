@@ -8,6 +8,8 @@
 <body>
   <h1>{{ tripulacion.nombre }}</h1>
 
+  <p><a href="{% url 'tripulacion_edit_tripulacion' tripulacion.id %}">Editar</a></p>
+  <p><a href="{% url 'tripulacion_tripulacion_delete' tripulacion.id %}">Eliminar</a></p>
   <p><a href="{% url 'tripulacion_index' %}">Regresar</a></p>
 
 </body>

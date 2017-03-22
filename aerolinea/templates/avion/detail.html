@@ -8,6 +8,8 @@
 <body>
   <h1>{{ avion.codigo }}</h1>
 
+  <p><a href="{% url 'avion_edit_avion' avion.id %}">Editar</a></p>
+  <p><a href="{% url 'avion_avion_delete' avion.id %}">Eliminar</a></p>
   <p><a href="{% url 'avion_index' %}">Regresar</a></p>
 
 </body>

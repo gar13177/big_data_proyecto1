@@ -19,7 +19,8 @@ class ObjectListField(forms.CharField):
 		obj = {}
 		lst = [item.strip() for item in value.split(',')]
 		for item in lst:
-			val = item.split('=');
+			val = item.split('=')
+			print val
 			obj[val[0]] = val[1]
         
 		return obj 

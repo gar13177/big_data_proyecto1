@@ -6,7 +6,8 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 </head>
 <body>
-  <h1>Tripulacion:</h1>
+  <a href="{% url 'generic_index' %}">Regresar</a>
+  <h1>Tripulacion (<a href="{% url 'tripulacion_new_tripulacion' %}">crear nueva</a>)</h1>
 
   {% for trip in tripulacion %}
     <div class="tripulacion">
@@ -14,7 +15,7 @@
       <h2>{{ trip.codigo }}</h2>
       <p>{{ trip.nombre }}</p>
       <p>{{ trip.base }}</p>
-      <p><a href="{% url 'tripulacion_tripulacion_detail' trip.codigo %}">Ver detalle</a></p>
+      <p><a href="{% url 'tripulacion_tripulacion_detail' trip.id %}">Ver detalle</a></p>
     </div>
   {% endfor %}
 </body>

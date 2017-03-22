@@ -6,7 +6,8 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 </head>
 <body>
-  <h1>Pilotos:</h1>
+  <a href="{% url 'generic_index' %}">Regresar</a>
+  <h1>Pilotos (<a href="{% url 'piloto_new_piloto' %}">crear nuevo</a>)</h1>
 
   {% for piloto in pilotos %}
     <div class="piloto">
@@ -15,7 +16,7 @@
       <p>{{ piloto.nombre }}</p>
       <p>{{ piloto.base }}</p>
       <p>{{ piloto.horas_vuelo }}</p>
-      <p><a href="{% url 'piloto_piloto_detail' piloto.codigo %}">Ver detalle</a></p>
+      <p><a href="{% url 'piloto_piloto_detail' piloto.id %}">Ver detalle</a></p>
     </div>
   {% endfor %}
 </body>

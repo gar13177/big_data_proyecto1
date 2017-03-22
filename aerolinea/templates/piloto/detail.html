@@ -8,6 +8,8 @@
 <body>
   <h1>{{ piloto.nombre }}</h1>
 
+  <p><a href="{% url 'piloto_edit_piloto' piloto.id %}">Editar</a></p>
+  <p><a href="{% url 'piloto_piloto_delete' piloto.id %}">Eliminar</a></p>
   <p><a href="{% url 'piloto_index' %}">Regresar</a></p>
 
 </body>

@@ -7,6 +7,10 @@ class EmbedOverrideField(EmbeddedModelField):
     def formfield(self, **kwargs):
         return models.Field.formfield(self, ObjectListField, **kwargs)
 
+class CategoryField(ListField):
+    def formfield(self, **kwargs):
+        return models.Field.formfield(self, StringListField, **kwargs)
+
 class Tripulacion(models.Model):
 	codigo = models.IntegerField()
 	nombre = models.CharField(max_length=200)
@@ -27,8 +31,7 @@ class Vuelo(models.Model):
 	fecha = models.DateField()
 	origen = models.CharField(max_length=200)
 	destino = models.CharField(max_length=200)
-	hora = models.DateTimeField()
-	tripulacion = ListField(EmbedOverrideField('Tripulacion'))
+	hora = models.TimeField()
+	tripulacion = CategoryField()
 	avion = EmbedOverrideField('Avion')
 	piloto = EmbedOverrideField('Piloto')
-
