@@ -1,21 +1,42 @@
 from django.shortcuts import render
 
 from aerolinea.models import Tripulacion, Piloto, Avion, Vuelo
-from aerolinea.forms import TripulacionForm, PilotoForm, AvionForm, VueloForm
+from aerolinea.forms import TripulacionForm, PilotoForm, AvionForm, VueloFormtest
 
 
 def new_vuelo(request):
     message = ''
     if request.method == 'GET':
-        vuelo_form = VueloForm()
+        vuelo_form = VueloFormtest()
     
     elif request.method == 'POST':
-        vuelo_form = VueloForm(data=request.POST)
+        vuelo_form = VueloFormtest(request.POST)
         
         if vuelo_form.is_valid():
-            vuelo_form.save()
-            vuelo_form = VueloForm()
+            
+            fechaV = vuelo_form.cleaned_data['fecha']
+            origenV = vuelo_form.cleaned_data['origen']
+            destinoV = vuelo_form.cleaned_data['destino']
+            horaV = vuelo_form.cleaned_data['hora']
+            tripulacionV = vuelo_form.cleaned_data['tripulacion']
+            tripList = tripulacionV.split(',')
+            avionV = vuelo_form.cleaned_data['avion']
+            avionInt = int(avionV)
+            pilotoV = vuelo_form.cleaned_data['piloto']
+            pilotoInt = int(pilotoV)
+            avionI= Avion.objects.get(codigo = avionInt)
+            pilotoI = Piloto.objects.get(codigo = pilotoInt)
+            Vuelo(fecha=fechaV,
+                origen = origenV, 
+                destino = destinoV, 
+                hora= horaV,
+                tripulacion = tripList,
+                avion = avionI,
+                piloto = pilotoI
+                ).save()
+            vuelo_form = VueloFormtest()
             message = 'Vuelo exitosamente guardado'
+
 
     
     return render(request,

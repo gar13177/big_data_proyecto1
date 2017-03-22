@@ -24,6 +24,7 @@ class ObjectListField(forms.CharField):
         
 		return obj 
 
+
 class StringListField(ObjectListField):
     def prepare_value(self, value):
         return ', '.join(value)

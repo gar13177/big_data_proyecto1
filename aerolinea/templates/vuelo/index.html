@@ -16,8 +16,8 @@
       <p>{{ vuelo.destino }}</p>
       <p>{{ vuelo.hora }}</p>
       <p>{{ vuelo.tripulacion }}</p>
-      <p>{{ vuelo.avion }}</p>
-      <p>{{ vuelo.piloto }}</p>
+      <p>{{ vuelo.avion.codigo }}</p>
+      <p>{{ vuelo.piloto.codigo }}</p>
       <p><a href="{% url 'vuelo_vuelo_detail' vuelo.id %}">Ver detalle</a></p>
     </div>
   {% endfor %}
