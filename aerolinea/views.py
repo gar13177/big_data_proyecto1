@@ -14,25 +14,25 @@ def new_vuelo(request):
         
         if vuelo_form.is_valid():
             
-            fechaV = vuelo_form.cleaned_data['fecha']
-            origenV = vuelo_form.cleaned_data['origen']
-            destinoV = vuelo_form.cleaned_data['destino']
-            horaV = vuelo_form.cleaned_data['hora']
-            tripulacionV = vuelo_form.cleaned_data['tripulacion']
-            tripList = tripulacionV.split(',')
-            avionV = vuelo_form.cleaned_data['avion']
+            fecha = vuelo_form.cleaned_data['fecha']
+            origen = vuelo_form.cleaned_data['origen']
+            destino = vuelo_form.cleaned_data['destino']
+            hora = vuelo_form.cleaned_data['hora']
+            tripulacion = vuelo_form.cleaned_data['tripulacion']
+            tripList = tripulacion.split(',')
+            avion = vuelo_form.cleaned_data['avion']
             avionInt = int(avionV)
-            pilotoV = vuelo_form.cleaned_data['piloto']
+            piloto = vuelo_form.cleaned_data['piloto']
             pilotoInt = int(pilotoV)
-            avionI= Avion.objects.get(codigo = avionInt)
-            pilotoI = Piloto.objects.get(codigo = pilotoInt)
-            Vuelo(fecha=fechaV,
-                origen = origenV, 
-                destino = destinoV, 
-                hora= horaV,
+            avion= Avion.objects.get(codigo = avionInt)
+            piloto = Piloto.objects.get(codigo = pilotoInt)
+            Vuelo(fecha=fecha,
+                origen = origen, 
+                destino = destino, 
+                hora= hora,
                 tripulacion = tripList,
-                avion = avionI,
-                piloto = pilotoI
+                avion = avion,
+                piloto = piloto
                 ).save()
             vuelo_form = VueloFormtest()
             message = 'Vuelo exitosamente guardado'
