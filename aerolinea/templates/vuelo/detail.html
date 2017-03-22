@@ -6,7 +6,15 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 </head>
 <body>
-  <h1>{{ vuelo.origen }}</h1>
+  <h1>{{ vuelo.fecha }}</h1>
+      <p>{{ vuelo.origen }}</p>
+      <p>{{ vuelo.destino }}</p>
+      <p>{{ vuelo.hora }}</p>
+      <p>{{ vuelo.tripulacion }}</p>
+      <p>{{ vuelo.avion.codigo }}</p>
+      <p>{{ vuelo.avion.tipo }}</p>
+      <p>{{ vuelo.piloto.nombre }}</p>
+      <p>{{ vuelo.piloto.base }}</p>
 
   <p><a href="{% url 'vuelo_edit_vuelo' vuelo.id %}">Editar</a></p>
   <p><a href="{% url 'vuelo_vuelo_delete' vuelo.id %}">Eliminar</a></p>

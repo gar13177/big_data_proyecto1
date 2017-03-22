@@ -53,13 +53,38 @@ def new_vuelo(request):
     })
 
 def edit_vuelo(request, vuelo_id):
-    vuelo = Vuelo.objects.get(id=vuelo_id)
-    vuelo_form = VueloForm2(request.POST or None, instance=vuelo)
-    message = ''       
+    vuelo_form = VueloForm2(request.POST)
+    message = ''
+    #vuelo = Vuelo.objects.get(id=vuelo_id)
     if vuelo_form.is_valid():
-        vuelo_form.save()
-        message = 'Vuelo exitosamente guardado'
-    
+        fecha = vuelo_form.cleaned_data['fecha']
+        origen = vuelo_form.cleaned_data['origen']
+        destino = vuelo_form.cleaned_data['destino']
+        hora = vuelo_form.cleaned_data['hora']
+        tripulacion = vuelo_form.cleaned_data['tripulacion']
+        tripList = tripulacion.split(',')
+        tripInt = []
+        for i in tripList:
+            tripInt.append(int(i))
+        avion = vuelo_form.cleaned_data['avion']
+        avionInt = int(avion)
+        piloto = vuelo_form.cleaned_data['piloto']
+        pilotoInt = int(piloto)
+        avion= Avion.objects.get(codigo = avionInt)
+        piloto = Piloto.objects.get(codigo = pilotoInt)
+        Vuelo(id = vuelo_id,
+        fecha=fecha,
+        origen = origen, 
+        destino = destino, 
+        hora= hora,
+        tripulacion = tripInt,
+        avion = avion,
+        piloto = piloto
+        ).save()
+        
+        vuelo_form = VueloForm2()
+        message = 'Vuelo exitosamente editado'
+        
     return render(request,
      'vuelo/new.html',
     { 
