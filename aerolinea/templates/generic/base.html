@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {% load staticfiles %}
-
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{%static 'aerolinea/css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{%static 'css/index2.css' %}">
+        <link rel="stylesheet" type="text/css" href="{%static 'css/styles.css' %}">
         {% block head %}
         {% endblock %}
+          <style>
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+</style>
     </head>
+    <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2010/09/CurrentUnitedAirlineLogo.jpg" alt="Mountain View" >
     <body>
         {% block content %}
         {% endblock %}
